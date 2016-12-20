@@ -7,6 +7,17 @@ class UBikeHeapIMP : public UBikeHeapADT
 {
 public:
     // Add your code here
+
+    //=================================================================
+    // add the ubike pointer to the heap
+    //=================================================================
+    void addUBikePtr(UBike* ubptr);
+
+    //=================================================================
+    // remove the ubike pointer in this heap at "index"
+    //=================================================================
+    UBike* removeUBikePtr(int heapIndex);
+
 };
 
 #endif

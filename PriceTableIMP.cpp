@@ -27,17 +27,21 @@ int PriceTableIMP::calcPrice(int milageDiff, std::string bClass,std::string from
     int discountDist = distTable[from][toStation];
     if(bClass=="Electric"){
         if(milageDiff>=discountDist)return (milageDiff-discountDist)*40+discountDist*25;
+        //if(milageDiff>=discountDist)return milageDiff*40;
         else return milageDiff*25;
     }
     if(bClass=="Lady"){
+        //if(milageDiff>=discountDist)return milageDiff*30;
         if(milageDiff>=discountDist)return (milageDiff-discountDist)*30+discountDist*20;
         else return milageDiff*20;
     }
     if(bClass=="Road"){
+        //if(milageDiff>=discountDist)return milageDiff*20;
         if(milageDiff>=discountDist)return (milageDiff-discountDist)*20+discountDist*10;
         else return milageDiff*10;
     }
     if(bClass=="Hybrid"){
+        //if(milageDiff>=discountDist)return milageDiff*25;
         if(milageDiff>=discountDist)return (milageDiff-discountDist)*25+discountDist*15;
         else return milageDiff*15;
     }

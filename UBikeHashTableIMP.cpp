@@ -1,6 +1,7 @@
 #include "UBikeHashTableIMP.h"
 #include <forward_list>
 #include <array>
+#include <iostream>
 
 // Add your code here
 //=================================================================
@@ -8,7 +9,13 @@
 //=================================================================
 void UBikeHashTableIMP::addUBikePtr(UBike* ubptr)
 {
-    this->at(ubptr->license[0]).push_front(ubptr);
+    int addr = 0;
+    for(int i=0;i<5;i++){
+        char c = ubptr->license[i];
+        addr=addr*29+(isdigit(c)?c-'0':c-'A'+10);
+    }
+    addr = (addr>>5)%256;
+    (*this)[addr].push_front(ubptr);
 }
 
 //=================================================================
@@ -18,14 +25,21 @@ void UBikeHashTableIMP::addUBikePtr(UBike* ubptr)
 //=================================================================
 UBike* UBikeHashTableIMP::findUBikePtr(std::string license, bool toRemove)
 {
+    int addr = 0;
+    for(int i=0;i<5;i++){
+        char c = license[i];
+        addr=addr*29+(isdigit(c)?c-'0':c-'A'+10);
+    }
+    addr = (addr>>5)%256;
     UBike* ptr = 0;
-    for(auto i:this->at(license[0])){
+    for(auto i:this->at(addr)){
         if(i->license==license){
             ptr = i;
+            break;
         }
     }
     if(toRemove){
-        this->at(license[0]).remove(ptr);
+        (*this)[addr].remove(ptr);
     }
     return ptr;
 }

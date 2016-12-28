@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Final" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="Final" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Final" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="PriceTableIMP.cpp" />
+		<Unit filename="PriceTableIMP.h" />
+		<Unit filename="UBikeHashTableIMP.cpp" />
+		<Unit filename="UBikeHashTableIMP.h" />
+		<Unit filename="UBikeHeapIMP.cpp" />
+		<Unit filename="UBikeHeapIMP.h" />
+		<Unit filename="UBikeSystemIMP.cpp" />
+		<Unit filename="UBikeSystemIMP.h" />
+		<Unit filename="readonly/ConstParams.h" />
+		<Unit filename="readonly/PriceTableADT.cpp" />
+		<Unit filename="readonly/PriceTableADT.h" />
+		<Unit filename="readonly/UBike.cpp" />
+		<Unit filename="readonly/UBike.h" />
+		<Unit filename="readonly/UBikeHashTableADT.cpp" />
+		<Unit filename="readonly/UBikeHashTableADT.h" />
+		<Unit filename="readonly/UBikeHeapADT.cpp" />
+		<Unit filename="readonly/UBikeHeapADT.h" />
+		<Unit filename="readonly/UBikeSystemADT.cpp" />
+		<Unit filename="readonly/UBikeSystemADT.h" />
+		<Unit filename="readonly/main.cpp" />
+		<Unit filename="readonly/tc1/ans.out" />
+		<Unit filename="readonly/tc1/cm.in" />
+		<Unit filename="readonly/tc1/map.in" />
+		<Unit filename="readonly/tc2/ans.out" />
+		<Unit filename="readonly/tc2/cm.in" />
+		<Unit filename="readonly/tc2/map.in" />
+		<Unit filename="readonly/tc3/ans.out" />
+		<Unit filename="readonly/tc3/cm.in" />
+		<Unit filename="readonly/tc3/map.in" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

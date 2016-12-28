@@ -1,4 +1,5 @@
 #include "UBikeSystemIMP.h"
+#include <iostream>
 // Add your code here
 //=================================================================
 // read the map and initialize this->priceTable
@@ -46,7 +47,9 @@ void UBikeSystemIMP::Rent
 {
     UBike* ptr = ubStations[station][classType].removeUBikePtr(ubStations[station][classType][1]->heapIndex);
     ptr->isRented = 1;
-    ubStations[station]["rented"].addUBikePtr(ptr);
+    ubStations[station]["Rented"].addUBikePtr(ptr);
+        //std::cout<<ptr->heapIndex<<std::endl;
+    //std::cout<<ptr->license<<std::endl;
 }
 
 //=================================================================
@@ -56,14 +59,24 @@ void UBikeSystemIMP::Return
 (std::string station, std::string license, int returnMile)
 {
     UBike* ptr = ubHashTable.findUBikePtr(license,0);
+    //std::cout<<ptr->heapIndex<<std::endl;
+
     if(!ptr)return;
     else if(!ptr->isRented)return;
-    ubStations[ptr->station]["rented"].removeUBikePtr(ptr->heapIndex);
-    ptr->mileage+=returnMile;
-    ubStations[station][ptr->classType].addUBikePtr(ptr);
-    net+=priceTable.calcPrice(returnMile,ptr->classType,ptr->station,station);
-    ptr->station = station;
+    net+=priceTable.calcPrice(returnMile-ptr->mileage,ptr->classType,ptr->station,station);
+    ubStations[ptr->station]["Rented"].removeUBikePtr(ptr->heapIndex);
+    ptr->mileage=returnMile;
     ptr->isRented=0;
+    ubStations[ptr->station][ptr->classType].addUBikePtr(ptr);
+        ptr->mileage=returnMile;
+    //ptr->station = station;
+    ptr->isRented=0;
+
+
+    //std::cout<<ptr->license<<std::endl;
+        //std::cout<<ptr->license<<std::endl;
+    //std::cout<<ptr->classType<<std::endl;
+    //std::cout<<std::endl;
 }
 
 //=================================================================

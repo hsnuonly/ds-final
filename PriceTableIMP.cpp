@@ -9,6 +9,7 @@
 //=================================================================
 void PriceTableIMP::calcAllPairsShortestPath(std::string mapFile)
 {
+    distTable.clear();
     std::ifstream input;
     input.open(mapFile);
     std::string a,b;

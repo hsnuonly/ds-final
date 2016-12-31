@@ -38,7 +38,7 @@ UBike* UBikeHashTableIMP::findUBikePtr(std::string license, bool toRemove)
             break;
         }
     }
-    if(toRemove){
+    if(toRemove&&ptr!=0){
         (*this)[addr].remove(ptr);
     }
     return ptr;

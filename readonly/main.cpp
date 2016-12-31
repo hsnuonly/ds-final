@@ -69,7 +69,7 @@ static void basicTest
         std::ostringstream oss;
         oss << ubSystem.toString();
 
-        //std::cout<<ubSystem.toString()<<"\n";
+        std::cout<<ubSystem.toString()<<"\n";
         //release the allocated memory
         ubSystem.ShutDown();
 
@@ -85,17 +85,17 @@ static void basicTest
     }
 }
 
-int main(int argc, char *argv[])
+int main()
 {
 // Public Test Cases
     std::cout << "test case 1: ";
-    basicTest( "readonly/tc1/cm.in", "readonly/tc1/map.in", "readonly/tc1/ans.out" );
+    basicTest( "tc1/cm.in", "tc1/map.in", "tc1/ans.out" );
 
     std::cout << "test case 2: ";
-    basicTest( "readonly/tc2/cm.in", "readonly/tc2/map.in", "readonly/tc2/ans.out" );
+    basicTest( "tc2/cm.in", "tc2/map.in", "tc2/ans.out" );
 
     std::cout << "test case 3: ";
-    basicTest( "readonly/tc3/cm.in", "readonly/tc3/map.in", "readonly/tc3/ans.out" );
+    basicTest( "tc3/cm.in", "tc3/map.in", "tc3/ans.out" );
 
 // Hidden Test Cases
 //    std::cout << "test case 4: ";

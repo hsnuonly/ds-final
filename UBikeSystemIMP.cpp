@@ -34,9 +34,11 @@ void UBikeSystemIMP::NewBike
 void UBikeSystemIMP::JunkIt
 (std::string license)
 {
-    UBike* ptr=ubHashTable.findUBikePtr(license,1);
-    if(ptr)ubStations[ptr->station][ptr->classType].removeUBikePtr(ptr->heapIndex);
-    delete ptr;
+    UBike* ptr=ubHashTable.findUBikePtr(license,0);
+    if(ptr==0)return;
+    if(ptr->isRented)return;
+    ubHashTable.findUBikePtr(license,1);
+    ubStations[ptr->station][ptr->classType].removeUBikePtr(ptr->heapIndex);
 }
 
 //=================================================================
@@ -46,10 +48,9 @@ void UBikeSystemIMP::Rent
 (std::string classType, std::string station)
 {
     UBike* ptr = ubStations[station][classType].removeUBikePtr(ubStations[station][classType][1]->heapIndex);
+    if(!ptr)return;
     ptr->isRented = 1;
     ubStations[station]["Rented"].addUBikePtr(ptr);
-        //std::cout<<ptr->heapIndex<<std::endl;
-    //std::cout<<ptr->license<<std::endl;
 }
 
 //=================================================================
@@ -68,15 +69,9 @@ void UBikeSystemIMP::Return
     ptr->mileage=returnMile;
     ptr->isRented=0;
     ubStations[ptr->station][ptr->classType].addUBikePtr(ptr);
-        ptr->mileage=returnMile;
-    //ptr->station = station;
+    ptr->mileage=returnMile;
     ptr->isRented=0;
 
-
-    //std::cout<<ptr->license<<std::endl;
-        //std::cout<<ptr->license<<std::endl;
-    //std::cout<<ptr->classType<<std::endl;
-    //std::cout<<std::endl;
 }
 
 //=================================================================
@@ -87,6 +82,7 @@ void UBikeSystemIMP::Trans
 {
     UBike* ptr = ubHashTable.findUBikePtr(license,0);
     if(!ptr)return;
+    if(ptr->isRented)return;
     ubStations[ptr->station][ptr->classType].removeUBikePtr(ptr->heapIndex);
     ubStations[station][ptr->classType].addUBikePtr(ptr);
     ptr->station = station;

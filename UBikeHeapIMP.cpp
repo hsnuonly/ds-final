@@ -30,24 +30,12 @@ void UBikeHeapIMP::addUBikePtr(UBike* ubptr)
 //=================================================================
 UBike* UBikeHeapIMP::removeUBikePtr(int heapIndex)
 {
-    UBike* ptr;
-    int pos;
-    bool found = 0;
-    for(int i=1;i<=number;i++){
-        if(this->at(i)->heapIndex==heapIndex){
-            pos = i;
-            ptr = this->at(i);
-            this->at(i) = this->at(this->number);
-            this->at(number) = 0;
-            number--;
-            found = 1;
-            ptr->heapIndex=heapIndex;
-            break;
-        }
-    }
-    if(!found)return 0;
+    if(heapIndex>number)return 0;
+    UBike* ptr = this->at(heapIndex);
+    this->at(heapIndex) = this->at(number--);
+    this->at(heapIndex)->heapIndex = heapIndex;
     int tmp_index;
-    for(int i=pos;i<=number>>1;){
+    for(int i=heapIndex;i<=number>>1;){
         UBike* now = this->at(i);
         UBike* l = this->at(i*2);
         UBike* r = this->at(i*2+1);

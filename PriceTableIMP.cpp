@@ -20,7 +20,7 @@ void PriceTableIMP::calcAllPairsShortestPath(std::string mapFile)
         }
     }
    for(int i=0;i<12;i++){
-        distTable[StationNames[i]][StationNames[i]]=0;
+        distTable[StationNames[i]][StationNames[i]]=1;
     }
     while(input>>a>>b>>c){
         //std::cout<<a<<" "<<b<<" "<<c<<std::endl;

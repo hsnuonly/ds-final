@@ -47,7 +47,7 @@ void UBikeSystemIMP::JunkIt
 void UBikeSystemIMP::Rent
 (std::string classType, std::string station)
 {
-    UBike* ptr = ubStations[station][classType].removeUBikePtr(ubStations[station][classType][1]->heapIndex);
+    UBike* ptr = ubStations[station][classType].removeUBikePtr(1);
     if(!ptr)return;
     ptr->isRented = 1;
     ubStations[station]["Rented"].addUBikePtr(ptr);
@@ -63,7 +63,7 @@ void UBikeSystemIMP::Return
     //std::cout<<ptr->heapIndex<<std::endl;
 
     if(!ptr)return;
-    else if(!ptr->isRented)return;
+    if(!ptr->isRented)return;
     net+=priceTable.calcPrice(returnMile-ptr->mileage,ptr->classType,ptr->station,station);
     ubStations[ptr->station]["Rented"].removeUBikePtr(ptr->heapIndex);
     ptr->mileage=returnMile;

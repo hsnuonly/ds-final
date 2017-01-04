@@ -17,6 +17,7 @@ void UBikeSystemIMP::NewBike
 (std::string classType, std::string license,
  int mile, std::string station)
 {
+    if(ubHashTable.findUBikePtr(license,0))return;
     UBike* newone = new UBike;
     newone->classType = classType;
     newone->isRented = 0;
@@ -69,8 +70,6 @@ void UBikeSystemIMP::Return
     ptr->mileage=returnMile;
     ptr->isRented=0;
     ubStations[ptr->station][ptr->classType].addUBikePtr(ptr);
-    ptr->mileage=returnMile;
-    ptr->isRented=0;
 
 }
 
@@ -93,5 +92,4 @@ void UBikeSystemIMP::Trans
 //=================================================================
 void UBikeSystemIMP::ShutDown()
 {
-
 }

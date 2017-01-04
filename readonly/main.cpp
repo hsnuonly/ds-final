@@ -23,6 +23,7 @@ static void basicTest
         std::string trs;
         while( ifs >> trs )
         {
+            //std::cout<<trs<<" ";
             if( trs=="NewBike" )
             {
                 std::string classType, license, station;
@@ -35,6 +36,7 @@ static void basicTest
                 std::string license;
                 ifs >> license;
                 ubSystem.JunkIt( license );
+        //std::cout<<ubSystem.toString()<<"\n";
             }
             else if( trs=="Rent" )
             {
@@ -68,8 +70,7 @@ static void basicTest
         //your output
         std::ostringstream oss;
         oss << ubSystem.toString();
-
-        std::cout<<ubSystem.toString()<<"\n";
+        //std::cout<<ubSystem.toString()<<"\n";
         //release the allocated memory
         ubSystem.ShutDown();
 
@@ -87,28 +88,29 @@ static void basicTest
 
 int main()
 {
-// Public Test Cases
-    std::cout << "test case 1: ";
-    basicTest( "tc1/cm.in", "tc1/map.in", "tc1/ans.out" );
 
+	std::cout << "test case 1: ";
+    basicTest( "tc1/testCase", "tc1/testMap", "tc1/output" );
+    
     std::cout << "test case 2: ";
-    basicTest( "tc2/cm.in", "tc2/map.in", "tc2/ans.out" );
-
+    basicTest( "tc2/testCase", "tc2/testMap", "tc2/output" );
+    
     std::cout << "test case 3: ";
-    basicTest( "tc3/cm.in", "tc3/map.in", "tc3/ans.out" );
+    basicTest( "tc3/testCase", "tc3/testMap", "tc3/output" );
 
-// Hidden Test Cases
-//    std::cout << "test case 4: ";
-//    basicTest( "tc4/cm.in", "tc4/map.in", "tc4/ans.out" );
+// HIDDEN-TEST-CASES
+//=============================================================
+    std::cout << "test case 4: ";
+    basicTest( "tc4/testCase", "tc4/testMap", "tc4/output" );
+//    
+    std::cout << "test case 5: ";
+    basicTest( "tc5/testCase", "tc5/testMap", "tc5/output" );
+//    
+    std::cout << "test case 6: ";
+    basicTest( "tc6/testCase", "tc6/testMap", "tc6/output" );
 //
-//    std::cout << "test case 5: ";
-//    basicTest( "tc5/cm.in", "tc5/map.in", "tc5/ans.out" );
-//
-//    std::cout << "test case 6: ";
-//    basicTest( "tc6/cm.in", "tc6/map.in", "tc6/ans.out" );
-//
-//    std::cout << "test case 7: ";
-//    basicTest( "tc7/cm.in", "tc7/map.in", "tc7/ans.out" );
+    std::cout << "test case 7: ";
+    basicTest( "tc7/testCase", "tc7/testMap", "tc7/output" );
 
 	return 0;
 }

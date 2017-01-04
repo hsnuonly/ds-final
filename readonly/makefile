@@ -1,4 +1,4 @@
-CC = clang -std=c++11 -lstdc++ -w
+CC = g++ -std=c++11 -lstdc++ -w
 
 SRCS = ../*.cpp
 RO_SRCS = ./*.cpp
